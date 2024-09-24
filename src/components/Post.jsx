@@ -3,12 +3,12 @@ import { Heart, MessageCircle, Send, Bookmark } from 'lucide-react';
 
 const Post = ({ username, avatar, image, likes, caption }) => {
   return (
-    <div className="bg-white border border-gray-300 rounded-md">
+    <div className="bg-white border border-gray-300 rounded-md mb-4">
       <div className="flex items-center p-4">
-        <img src={avatar} alt={username} className="w-8 h-8 rounded-full mr-3" />
+        <img src={avatar} alt={username} className="w-8 h-8 rounded-full mr-3 object-cover" />
         <span className="font-semibold">{username}</span>
       </div>
-      <img src={image} alt="Post" className="w-full" />
+      <img src={image} alt="Post" className="w-full h-96 object-cover" />
       <div className="p-4">
         <div className="flex justify-between mb-4">
           <div className="flex space-x-4">

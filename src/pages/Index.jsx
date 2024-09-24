@@ -3,6 +3,17 @@ import Header from '../components/Header';
 import Post from '../components/Post';
 import Story from '../components/Story';
 
+const generateRandomPosts = (count) => {
+  return Array.from({ length: count }, (_, index) => ({
+    id: index + 1,
+    username: `user${index + 1}`,
+    avatar: `https://i.pravatar.cc/150?img=${index + 1}`,
+    image: `https://picsum.photos/800/600?random=${index + 1}`,
+    likes: Math.floor(Math.random() * 1000),
+    caption: `This is a random caption for post ${index + 1}!`
+  }));
+};
+
 const Index = () => {
   const stories = [
     { id: 1, username: 'user1', avatar: 'https://i.pravatar.cc/150?img=1' },
@@ -10,10 +21,7 @@ const Index = () => {
     { id: 3, username: 'user3', avatar: 'https://i.pravatar.cc/150?img=3' },
   ];
 
-  const posts = [
-    { id: 1, username: 'john_doe', avatar: 'https://i.pravatar.cc/150?img=4', image: 'https://source.unsplash.com/random/800x600?sig=1', likes: 123, caption: 'Beautiful day!' },
-    { id: 2, username: 'jane_smith', avatar: 'https://i.pravatar.cc/150?img=5', image: 'https://source.unsplash.com/random/800x600?sig=2', likes: 456, caption: 'Amazing view!' },
-  ];
+  const posts = generateRandomPosts(5); // Generate 5 random posts
 
   return (
     <div className="bg-gray-100 min-h-screen">
