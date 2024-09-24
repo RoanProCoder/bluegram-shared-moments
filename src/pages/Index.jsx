@@ -18,7 +18,7 @@ const generateRandomPosts = (count) => {
     id: 2,
     username: 'user2',
     avatar: 'https://i.pravatar.cc/150?img=2',
-    image: 'https://picsum.photos/800/600?random=news',
+    image: 'https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
     likes: Math.floor(Math.random() * 1000),
     caption: 'Breaking News: Scientists discover a new species of deep-sea creature in the Mariana Trench!'
   };
