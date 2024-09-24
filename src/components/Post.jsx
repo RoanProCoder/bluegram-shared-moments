@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Heart, MessageCircle, Send, Bookmark } from 'lucide-react';
 
-const Post = ({ username, avatar, image, likes, caption }) => {
+const Post = ({ username, avatar, image, initialLikes, caption }) => {
+  const [likes, setLikes] = useState(initialLikes);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLike = () => {
+    if (!isLiked) {
+      setLikes(likes + 1);
+      setIsLiked(true);
+    }
+  };
+
   return (
     <div className="bg-white border border-gray-300 rounded-md mb-4">
       <div className="flex items-center p-4">
@@ -12,7 +22,10 @@ const Post = ({ username, avatar, image, likes, caption }) => {
       <div className="p-4">
         <div className="flex justify-between mb-4">
           <div className="flex space-x-4">
-            <Heart className="text-blue-600" />
+            <Heart
+              className={`cursor-pointer ${isLiked ? 'text-red-500 fill-red-500' : 'text-blue-600'}`}
+              onClick={handleLike}
+            />
             <MessageCircle className="text-blue-600" />
             <Send className="text-blue-600" />
           </div>
