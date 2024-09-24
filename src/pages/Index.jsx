@@ -14,14 +14,17 @@ const generateRandomPosts = (count) => {
   }));
 };
 
-const Index = () => {
-  const stories = [
-    { id: 1, username: 'user1', avatar: 'https://i.pravatar.cc/150?img=1' },
-    { id: 2, username: 'user2', avatar: 'https://i.pravatar.cc/150?img=2' },
-    { id: 3, username: 'user3', avatar: 'https://i.pravatar.cc/150?img=3' },
-  ];
+const generateRandomStories = (count) => {
+  return Array.from({ length: count }, (_, index) => ({
+    id: index + 1,
+    username: `user${index + 1}`,
+    avatar: `https://i.pravatar.cc/150?img=${index + 1}`
+  }));
+};
 
-  const posts = generateRandomPosts(5); // Generate 5 random posts
+const Index = () => {
+  const stories = generateRandomStories(10); // Generate 10 random stories
+  const posts = generateRandomPosts(10); // Generate 10 random posts
 
   return (
     <div className="bg-gray-100 min-h-screen">
