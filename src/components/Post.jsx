@@ -21,7 +21,15 @@ const Post = ({ username, avatar, image, initialLikes, caption, isPotentiallyFak
         <img src={avatar} alt={username} className="w-8 h-8 rounded-full mr-3 object-cover" />
         <span className="font-semibold">{username}</span>
       </div>
-      <img src={image} alt="Post" className="w-full h-96 object-cover" />
+      <div className="relative">
+        <img src={image} alt="Post" className="w-full h-96 object-cover" />
+        {isPotentiallyFakeNews && (
+          <div className="absolute bottom-0 left-0 right-0 bg-yellow-500 bg-opacity-80 text-white text-xs py-1 px-2 flex items-center justify-center">
+            <AlertTriangle className="w-4 h-4 mr-1" />
+            <span>High likelihood of fake news. Verify before sharing.</span>
+          </div>
+        )}
+      </div>
       <div className="p-4">
         <div className="flex justify-between mb-4">
           <div className="flex space-x-4">
@@ -36,12 +44,6 @@ const Post = ({ username, avatar, image, initialLikes, caption, isPotentiallyFak
         </div>
         <p className="font-semibold mb-2">{likes} likes</p>
         <p><span className="font-semibold">{username}</span> {caption}</p>
-        {isPotentiallyFakeNews && (
-          <div className="mt-2 text-yellow-600 flex items-center">
-            <AlertTriangle className="w-4 h-4 mr-1" />
-            <span className="text-sm">High likelihood of fake news. Verify before sharing.</span>
-          </div>
-        )}
       </div>
     </div>
   );
