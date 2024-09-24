@@ -4,7 +4,7 @@ import Post from '../components/Post';
 import Story from '../components/Story';
 
 const generateRandomPosts = (count) => {
-  return Array.from({ length: count }, (_, index) => ({
+  const posts = Array.from({ length: count }, (_, index) => ({
     id: index + 1,
     username: `user${index + 1}`,
     avatar: `https://i.pravatar.cc/150?img=${index + 1}`,
@@ -12,6 +12,18 @@ const generateRandomPosts = (count) => {
     likes: Math.floor(Math.random() * 1000),
     caption: `This is a random caption for post ${index + 1}!`
   }));
+
+  // Replace the second post (index 1) with a news-related post
+  posts[1] = {
+    id: 2,
+    username: 'user2',
+    avatar: 'https://i.pravatar.cc/150?img=2',
+    image: 'https://picsum.photos/800/600?random=news',
+    likes: Math.floor(Math.random() * 1000),
+    caption: 'Breaking News: Scientists discover a new species of deep-sea creature in the Mariana Trench!'
+  };
+
+  return posts;
 };
 
 const generateRandomStories = (count) => {
