@@ -6,7 +6,10 @@ const Post = ({ username, avatar, image, initialLikes, caption }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = () => {
-    if (!isLiked) {
+    if (isLiked) {
+      setLikes(likes - 1);
+      setIsLiked(false);
+    } else {
       setLikes(likes + 1);
       setIsLiked(true);
     }
