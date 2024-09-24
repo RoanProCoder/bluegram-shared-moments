@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Heart, MessageCircle, Send, Bookmark } from 'lucide-react';
+import { Heart, MessageCircle, Send, Bookmark, AlertTriangle } from 'lucide-react';
 
-const Post = ({ username, avatar, image, initialLikes, caption }) => {
+const Post = ({ username, avatar, image, initialLikes, caption, isPotentiallyFakeNews }) => {
   const [likes, setLikes] = useState(initialLikes);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -36,6 +36,12 @@ const Post = ({ username, avatar, image, initialLikes, caption }) => {
         </div>
         <p className="font-semibold mb-2">{likes} likes</p>
         <p><span className="font-semibold">{username}</span> {caption}</p>
+        {isPotentiallyFakeNews && (
+          <div className="mt-2 text-yellow-600 flex items-center">
+            <AlertTriangle className="w-4 h-4 mr-1" />
+            <span className="text-sm">High likelihood of fake news. Verify before sharing.</span>
+          </div>
+        )}
       </div>
     </div>
   );
